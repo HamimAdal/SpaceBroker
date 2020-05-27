@@ -52,7 +52,7 @@ def query ():
 
     print("\nCurrent illumination level: {} unit".format(value))
     
-    value = original_value
+    
 
 
 
