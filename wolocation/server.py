@@ -32,38 +32,38 @@ while True:
                         data = tcpCliSock.recv(BUFSIZE)
                        
                         if not data:
-                            break                    
+                           	break                    
 
-						sp = data[0] + data[1]
-  						data = data [2:]
-						choice = data[0]
+			sp = data[0] + data[1]
+  			data = data [2:]
+			choice = data[0]
                         data = data [1:]
                                            
 
-						if (choice == '1'):
+			if (choice == '1'):
 
     								
-							query.query()
-    						message = str(query.unitvalue)
-							message = sp + message
-    						tcpCliSock.sendall(message)
-    						#tcpSerSock.close()  
-							break
+				query.query()
+    				message = str(query.unitvalue)
+				message = sp + message
+    				tcpCliSock.sendall(message)
+    				#tcpSerSock.close()  
+				break
 
  
-    					time.sleep(2)
-    					duty_s = data
-    					duty_s = int(duty_s)
+    			time.sleep(2)
+    			duty_s = data
+    			duty_s = int(duty_s)
 
 
                         if (choice == '2'):
 
-    						modify.modify(duty_s)
-							break
+    				modify.modify(duty_s)
+				break
    			 
                         if (choice == '3'):
 
-    						maintain.maintain(duty_s)
+    				maintain.maintain(duty_s)
 
                         
         except KeyboardInterrupt:
