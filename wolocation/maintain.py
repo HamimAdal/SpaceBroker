@@ -66,14 +66,14 @@ def maintain (duty_s):
  		original_value = value
 		value = 1000 - value
 		if value < 0:
-       	    value = 0
+       	   		value = 0
 
 		print("Current illumination Value: {} and Current LED1 Value: {} and Current LED2 Value: {}".format(value,duty,duty1))     
         
-        value = original_value
+        	value = original_value
 				
-        if (value > upper):			
-        	decrease()  
+        	if (value > upper):			
+        		decrease()  
 
 		if (value >= lower and value <= upper):
 
