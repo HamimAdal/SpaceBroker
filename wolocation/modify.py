@@ -62,41 +62,41 @@ def modify (duty_s):
 
     while True:
 
-		value = rc_time(ldrpin) * 1000
+	value = rc_time(ldrpin) * 1000
     	
         original_value = value
-		value = 1000 - value
-		if value < 0:
+	value = 1000 - value
+	if value < 0:
        	        value = 0
 	
-		print("Current illumination level: {} and Current LED1 Value: {} and Current LED2 Value: {}".format(value,duty,duty1))    
-        value = original_value
+	print("Current illumination level: {} and Current LED1 Value: {} and Current LED2 Value: {}".format(value,duty,duty1))    
+       	value = original_value
         
 				
         if (value > upper):			
-        		decrease()
+        	decrease()
 
-		if (value >= lower and value <= upper):
+	if (value >= lower and value <= upper):
                 
-				print(" MODIFIED LDR VALUE ACHIEVED :")
+		print(" MODIFIED LDR VALUE ACHIEVED :")
 		
-				original_value = value
-				value = 1000 - value
+		original_value = value
+		value = 1000 - value
     		
-				print(value)
-				 value = original_value
+		print(value)
+		value = original_value
 	
-				break
+		break
 
-		if (value < lower):
+	if (value < lower):
                 
-				increase()
+		increase()
 
     while True:
         
-		ldr.pwm_led.ChangeDutyCycle(duty)  
-		ldr.pwm_led1.ChangeDutyCycle(duty1)  
-		time.sleep(0.5) 
+	ldr.pwm_led.ChangeDutyCycle(duty)  
+	ldr.pwm_led1.ChangeDutyCycle(duty1)  
+	time.sleep(0.5) 
 
 
 def rc_time (ldr):
