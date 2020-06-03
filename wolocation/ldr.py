@@ -3,32 +3,40 @@ import time
 
 GPIO.setmode(GPIO.BCM)
 
+led = [18,23]
+	
 
+def initialize():   
 
-led = 18 	#led is connected with pin number 18
-led1 = 23 	#led1 is connected with pin number 23
-
-
-def initialize():       
-        
-    GPIO.setup(led, GPIO.OUT) 	
-    GPIO.setup(led1, GPIO.OUT) 	
-    
+    for x in led:
+    	
+    	 GPIO.setup(x, GPIO.OUT) 	
+          
     global pwm_led
-    global pwm_led1
+    pwm_led = [0,0]
+    i=0 
 
-    pwm_led = GPIO.PWM( led, 50)  
-    pwm_led.start(55)
+    for x in led:
+     	
+    	 pwm_led[i] = GPIO.PWM( x, 50)  
 
-    pwm_led1 = GPIO.PWM( led1, 50)  
-    pwm_led1.start(0) 
+         if i==0:
+            
+             pwm_led[i].start(55)
+         else:
 
+             pwm_led[i].start(0) 
 
- 
- 
+         i = i+1
+
 def close():
-    pwm_led.stop()
-    pwm_led1.stop()
+
+    for x in pwm_led:   	
+         x.stop()
+    
+
+
+
 
 
 

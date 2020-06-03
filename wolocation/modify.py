@@ -3,74 +3,92 @@ import RPi.GPIO as GPIO
 import time
 
 
-
 GPIO.setmode(GPIO.BCM)
 
- 
-duty= 55
-duty1=0
 
 value = 0 	# this variable will be used to store the ldr value
-ldrpin = 4 	#ldr is connected with pin number 4
+ldrpin = [4] 	#ldr is connected with pin number 4
 
+duty = [55,0]
+i = 0
 
 
 def increase ():
+   
+
     global duty
-    global duty1
-    duty -= 5
+    global i
 
-    if duty < 0:
-            duty = 0 
-	    duty1 -= 5
-    if duty1 < 0:
-            duty1 = 0 
+   
+    if duty[i] <= 0 :
+         duty[i] = 0 
+         if i > 0:
+         	i = i-1
+        	duty[i] -= 5
+    else:
+         duty[i] -= 5
 
-    ldr.pwm_led.ChangeDutyCycle(duty) 	
-    ldr.pwm_led1.ChangeDutyCycle(duty1)  
+    j=0
+    for x in duty:
+    	
+    	 ldr.pwm_led[j].ChangeDutyCycle(x)  
+         j=j+1
+
     time.sleep(0.5) 
+
 
 def decrease ():
+
     global duty
-    global duty1
-    duty += 5
+    global i
+    
+    if duty[i] >= 100 :
+         duty[i] = 100 
+         if i < len(duty) - 1:
+         	i = i+1
+        	duty[i] += 5
 
-    if duty > 100:
-            duty = 100  
-            duty1 += 5
+    else:
+         duty[i] += 5
 
-    if duty1 > 100:
-            duty1 = 100  
-			
-
-    ldr.pwm_led.ChangeDutyCycle(duty)  
-    ldr.pwm_led1.ChangeDutyCycle(duty1)  
+    j=0
+    for x in duty:
+    	
+    	 ldr.pwm_led[j].ChangeDutyCycle(x)  
+         j=j+1
+    
+  
     time.sleep(0.5) 
-
 
 
 def modify (duty_s):
        
     global value
     global duty
-    global duty1
+    
+    duty_s = 1000 - duty_s   
 
-    duty_s = 1000 - duty_s
-  
     lower = duty_s - 10
     upper = duty_s + 10
 
     while True:
 
-	value = rc_time(ldrpin) * 1000
+	value = rc_time(ldrpin[0]) * 1000
     	
         original_value = value
 	value = 1000 - value
 	if value < 0:
        	        value = 0
+	print("\n")
 	
-	print("Current illumination level: {} and Current LED1 Value: {} and Current LED2 Value: {}".format(value,duty,duty1))    
-       	value = original_value
+	print("Current illumination level: {} ".format(value) )   
+        
+        j=0
+        for x in duty:
+                print("Current LED{} Value: {} ".format(j+1,x))  
+                j=j+1
+
+        value = original_value
         
 				
         if (value > upper):			
@@ -84,7 +102,7 @@ def modify (duty_s):
 		value = 1000 - value
     		
 		print(value)
-		value = original_value
+                value = original_value
 	
 		break
 
@@ -93,10 +111,13 @@ def modify (duty_s):
 		increase()
 
     while True:
-        
-	ldr.pwm_led.ChangeDutyCycle(duty)  
-	ldr.pwm_led1.ChangeDutyCycle(duty1)  
-	time.sleep(0.5) 
+        j=0
+	for x in duty:
+    	
+    	        ldr.pwm_led[j].ChangeDutyCycle(x)  
+                j=j+1
+  
+        time.sleep(0.5) 
 
 
 def rc_time (ldr):

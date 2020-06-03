@@ -31,8 +31,11 @@ while True:
                         data = ''
                         data = tcpCliSock.recv(BUFSIZE)
                        
+
                         if not data:
-                           	break                    
+                                break
+
+                       
 
 			sp = data[0] + data[1]
   			data = data [2:]
@@ -47,7 +50,7 @@ while True:
     				message = str(query.unitvalue)
 				message = sp + message
     				tcpCliSock.sendall(message)
-    				#tcpSerSock.close()  
+    			        #tcpSerSock.close()  
 				break
 
  

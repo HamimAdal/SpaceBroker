@@ -5,13 +5,12 @@ GPIO.setmode(GPIO.BCM)
 
 
 value = 0 	# this variable will be used to store the ldr value
-ldr = 4 	#ldr is connected with pin number 4
 
+ldr = [4]
 
 
 def rc_time (ldr):
-   
- 
+    
         #Output on the pin for
 
     GPIO.setup(ldr, GPIO.OUT)
@@ -32,15 +31,13 @@ def rc_time (ldr):
  
     return diff
 
-
-
 def query ():
     
     global value
     global unitvalue
 
     time.sleep(3)
-    value = rc_time(ldr) * 1000
+    value = rc_time(ldr[0]) * 1000
 
     original_value = value
     value = 1000 - value
@@ -52,7 +49,7 @@ def query ():
 
     print("\nCurrent illumination level: {} unit".format(value))
     
-    
+    value = original_value
 
 
 
