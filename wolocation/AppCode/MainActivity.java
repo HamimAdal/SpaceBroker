@@ -86,8 +86,9 @@ public class MainActivity extends AppCompatActivity
                 String queryycmd = queryy.getText().toString();    // Storing Y-coordiante of location for query method
 
                 choiceId = "1";
-                CMD = choiceId + ":" + queryxcmd + ":" + queryycmd  ;    // Sending X and Y cordinate of location with choice type ("1" in the beginning means "query" method)
-
+                CMD = choiceId + ":" + queryxcmd + ":" + queryycmd  ;
+                                                                   //  Sending choice type ("1" in the beginning means "query" method)
+                                                                   //  Also Sending X and Y coordinate of location
                 Socket_AsyncTask cmd_increase_illumination = new Socket_AsyncTask();
 
                 cmd_increase_illumination.execute();
@@ -106,7 +107,9 @@ public class MainActivity extends AppCompatActivity
                 String modifyycmd = modifyy.getText().toString();    // Storing Y coordinate of location for modify method
 
                 choiceId = "2";
-                CMD = choiceId + ":" + modifyxcmd + ":" + modifyycmd + ":" + modifycmd; // Sending X and Y coordinate of location with choice type ("2" in the beginning means "modify" method)
+                CMD = choiceId + ":" + modifyxcmd + ":" + modifyycmd + ":" + modifycmd;
+                                                                  // Sending choice type ("2" in the beginning means "modify" method),
+                                                                  // Also sending X and Y coordinate of location,
                                                                   // Also sending the value which needs to get modified
 
                 Socket_AsyncTask cmd_increase_illumination = new Socket_AsyncTask();
