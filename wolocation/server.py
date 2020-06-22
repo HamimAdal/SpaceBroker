@@ -2,6 +2,7 @@ import ldr
 import query
 import modify
 import maintain
+#import top
 
 from socket import *
 import time
@@ -23,9 +24,11 @@ tcpSerSock.bind(ADDR)
 tcpSerSock.listen(5)
 
 while True:
+
         print 'Waiting for connection'
         tcpCliSock,addr = tcpSerSock.accept()
         print '...connected from :', addr
+
         try:
                 while True:
                         data = ''
@@ -36,42 +39,80 @@ while True:
                                 break
 
                        
-
+                       
 			sp = data[0] + data[1]
+                       
+
   			data = data [2:]
-			choice = data[0]
-                        data = data [1:]
+                        
+                        temp = data.split(':')
+
+			choice = temp[0]
+                        
                                            
 
 			if (choice == '1'):
 
-    								
-				query.query()
+    					
+
+                                
+                                                              
+                                x = temp[1] 
+                                y = temp[2]  
+                                
+                                x = int(x)
+                                y = int(y)
+
+                                	
+			
+				query.query(x,y)
     				message = str(query.unitvalue)
+                                
+                                
 				message = sp + message
+                                
     				tcpCliSock.sendall(message)
     			        #tcpSerSock.close()  
 				break
 
  
     			time.sleep(2)
-    			duty_s = data
-    			duty_s = int(duty_s)
+    			
 
 
                         if (choice == '2'):
 
-    				modify.modify(duty_s)
+                               	
+
+                                
+                                
+                                x = temp[1] 
+                                y = temp[2]  
+
+                                x = int(x)
+                                y = int(y)
+
+                                	
+			
+                                
+                                duty_s = temp[3] 
+    			        duty_s = int(duty_s)
+
+    				modify.modify(duty_s,x,y)
 				break
    			 
                         if (choice == '3'):
-
-    				maintain.maintain(duty_s)
+                                
+                               
+                                duty_s = temp[1] 
+    			        duty_s = int(duty_s)
+                                maintain.maintain(duty_s)
 
                         
         except KeyboardInterrupt:
                 ldr.close()
                 GPIO.cleanup()
+
 tcpSerSock.close();
 
 

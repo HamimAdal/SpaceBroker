@@ -6,7 +6,7 @@ GPIO.setmode(GPIO.BCM)
 
 value = 0 	# this variable will be used to store the ldr value
 
-ldr = [4]
+ldrpin = [4,17,6,5]  #4,17,6,5
 
 
 def rc_time (ldr):
@@ -31,13 +31,23 @@ def rc_time (ldr):
  
     return diff
 
-def query ():
+def query (x,y):
     
     global value
     global unitvalue
 
     time.sleep(3)
-    value = rc_time(ldr[0]) * 1000
+
+    if x >= 0 and x<=250 and y >= 251 and y <= 500 :
+    	value = rc_time(ldrpin[0]) * 1000
+	
+    if x >= 0 and x<=250 and y >= 0 and y <= 250 :
+    	value = rc_time(ldrpin[1]) * 1000
+    if x >= 251 and x<=500 and y >= 251 and y <= 500 :
+    	value = rc_time(ldrpin[2]) * 1000
+	
+    if x >= 251 and x<=500 and y >= 0 and y <= 250 :
+    	value = rc_time(ldrpin[3]) * 1000
 
     original_value = value
     value = 1000 - value
