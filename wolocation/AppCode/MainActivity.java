@@ -78,9 +78,9 @@ public class MainActivity extends AppCompatActivity
                 requestId = "modifyUserLocation";
                 String modifyX = "NULL";
                 String modifyY = "NULL";
-                String modifyValue = modifyValueUserLocation.getText().toString();  // ****** Calling of modify method with USER LOCATION ******
+                String modifyValue = modifyValueUserLocation.getText().toString();
 
-                illumination.modify(requestId,modifyX,modifyY,modifyValue);
+                illumination.modify(requestId,modifyX,modifyY,modifyValue);  // ****** Calling of modify method with USER LOCATION ******
 
             }
         });
@@ -93,9 +93,9 @@ public class MainActivity extends AppCompatActivity
                 requestId = "maintainUserLocation";
                 String maintainX = "NULL";
                 String maintainY = "NULL";
-                String maintainValue = maintainValueUserLocation.getText().toString(); // ****** Calling of maintain method with USER LOCATION ******
+                String maintainValue = maintainValueUserLocation.getText().toString();
 
-                illumination.maintain(requestId,maintainX,maintainY,maintainValue);
+                illumination.maintain(requestId,maintainX,maintainY,maintainValue);  // ****** Calling of maintain method with USER LOCATION ******
             }
         });
 
