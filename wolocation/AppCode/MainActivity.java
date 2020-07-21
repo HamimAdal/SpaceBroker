@@ -103,8 +103,9 @@ public class MainActivity extends AppCompatActivity
         {
             @Override
             public void onClick(View v)
-            {  //Going to the second page which deal with query,modify,maintain method with Specific Location
+            {
 
+                    //Going to the second page which deal with query,modify,maintain method with Specific Location
 
                     Intent intent = new Intent(MainActivity.this, specificLocationActivity.class);
                     startActivity(intent);
