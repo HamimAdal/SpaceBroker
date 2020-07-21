@@ -15,7 +15,6 @@ interface floorPlanInterface
 {
     String returnSpaceImage(String imageString  );
     String inputLocationInSpaceImage(View view, MotionEvent event);
-
 }
 
 class floorPlan implements floorPlanInterface

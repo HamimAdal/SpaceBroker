@@ -64,6 +64,29 @@ public class specificLocationActivity extends Activity
         maintainWithLocationValue =  findViewById(R.id.maintainwithlocation);
 
 
+        btnSpace.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+
+                requestType = "returnSpaceImage";
+
+                String queriedSpaceImage= floorPlanImage.returnSpaceImage(requestType ); // ******calling of returnSpaceImage method ******
+                // ******returns space image from raspberry pi (Space Broker) ******
+
+
+                // Displaying Space Image on the app
+                ImageView image = findViewById(R.id.spaceImage);
+                byte[] imageBytes = Base64.decode(queriedSpaceImage, Base64.DEFAULT);
+                Bitmap decodedImage = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
+                image.setImageBitmap(decodedImage);
+
+
+            }
+
+        });
+
         OnTouchListener imgSourceOnTouchListener
                 = new OnTouchListener()
         {
@@ -73,7 +96,7 @@ public class specificLocationActivity extends Activity
             {
 
                 String coordinate = floorPlanImage.inputLocationInSpaceImage(view,  event); // ***** This method returns Location coordinates (x and y) provided by the user *****
-                                                                                            // ***** by touching pixel on the Space Image *****
+                // ***** by touching pixel on the Space Image *****
 
                 String array[] = coordinate.split(":");
 
@@ -147,29 +170,7 @@ public class specificLocationActivity extends Activity
             }
         });
 
-        btnSpace.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
 
-                floorPlan floorPlanImage= new floorPlan();
-                requestType = "returnSpaceImage";
-
-                String queriedSpaceImage= floorPlanImage.returnSpaceImage(requestType ); // ******calling of returnSpaceImage method ******
-                                                                                       // ******returns space image from raspberry pi (Space Broker) ******
-
-
-                // Displaying Space Image on the app
-                ImageView image = findViewById(R.id.spaceImage);
-                byte[] imageBytes = Base64.decode(queriedSpaceImage, Base64.DEFAULT);
-                Bitmap decodedImage = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
-                image.setImageBitmap(decodedImage);
-
-
-            }
-
-        });
 
 
 

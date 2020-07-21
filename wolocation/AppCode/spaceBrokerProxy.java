@@ -25,17 +25,7 @@ class Characteristics   implements characteristicsInterface
     public String query(String requestType, String X,String Y )  // ****** implementation of query method ******
     {
 
-
-
-        if (X == "NULL" && Y == "NULL")        // ****** implementation of query method with USER LOCATION ******
-            {
-                CMD = requestType + ":" + "NULLVALUE" ;
-            }
-        else                                   // ****** implementation of query method with SPECIFIC LOCATION ******
-            {
-                CMD = requestType + ":" + X + ":" + Y ;
-            }
-
+        CMD = requestType + ":" + X + ":" + Y ;
         wirelessCommunication wirelesscommunication = new wirelessCommunication();
         wirelesscommunication.execute(CMD);  // ****** wireless communication between app and raspberry pi (Space Broker) ******
 
@@ -61,15 +51,7 @@ class Characteristics   implements characteristicsInterface
     public void modify(String requestType, String X,String Y,String Value)  // ****** implementation of modify method ******
     {
 
-        if (X == "NULL" && Y == "NULL")        // ****** implementation of modify method with USER LOCATION ******
-            {
-                CMD = requestType + ":" + Value;
-            }
-        else                                   // ****** implementation of modify method with SPECIFIC LOCATION ******
-            {
-                CMD = requestType + ":" + X + ":" + Y + ":" + Value;
-            }
-
+        CMD = requestType + ":" + X + ":" + Y + ":" + Value;
         wirelessCommunication wirelesscommunication = new wirelessCommunication();
         wirelesscommunication.execute(CMD);  // ****** wireless communication between app and raspberry pi (Space Broker) ******
 
@@ -79,16 +61,8 @@ class Characteristics   implements characteristicsInterface
     @Override
     public void maintain(String requestType, String X,String Y,String Value)  // implementation of maintain method
     {
-        if (X == "NULL" && Y == "NULL")      // ****** implementation of maintain method with USER LOCATION ******
-            {
-                CMD = requestType + ":" + Value;
-            }
 
-        else                                 // ****** implementation of maintain method with SPECIFIC LOCATION ******
-            {
-                CMD = requestType + ":" + X + ":" + Y + ":" + Value;
-            }
-
+        CMD = requestType + ":" + X + ":" + Y + ":" + Value;
         wirelessCommunication wirelesscommunication = new wirelessCommunication();
         wirelesscommunication.execute(CMD);  // ****** wireless communication between app and raspberry pi (Space Broker) ******
 
