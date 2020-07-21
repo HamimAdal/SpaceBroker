@@ -31,7 +31,7 @@ class wirelessCommunication extends AsyncTask<String,Void,Void>
 
 
             DataOutputStream dataOutputStream = new DataOutputStream(socket.getOutputStream());
-            dataOutputStream.writeUTF(CMD);   // Sending data from app to raspberry pi (space broker)
+            dataOutputStream.writeUTF(CMD);   // ********** Sending data from app to raspberry pi (space broker) ****************
             dataOutputStream.flush();
 
 
@@ -45,7 +45,7 @@ class wirelessCommunication extends AsyncTask<String,Void,Void>
                 int f;
 
 
-                receivedString = inp.readUTF();  // Receiving data from raspberry pi to app (space broker)
+                receivedString = inp.readUTF();  // ********** Receiving data from raspberry pi to app (space broker) ******************
                 f = inp.available();
 
 

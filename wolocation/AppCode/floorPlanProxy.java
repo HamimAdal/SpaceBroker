@@ -24,8 +24,10 @@ class floorPlan implements floorPlanInterface
 
     public static String requestSpaceImage ;
 
-
+    // **********************************
     // The following method is for retrieving space image from raspberry pi (Space Broker)
+    // **********************************
+
     public String returnSpaceImage(String requestType  )
     {
 
@@ -50,7 +52,12 @@ class floorPlan implements floorPlanInterface
 
     }
 
+
+    // *******************************************
     // The following method is for providing Location coordinates from the user by touching pixel on the Space Image
+    // *******************************************
+
+
     public String inputLocationInSpaceImage(View view, MotionEvent event)
     {
         int x,y;

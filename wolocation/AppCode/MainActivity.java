@@ -8,7 +8,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
-// query,modify and maintain method with USER LOCATION
+// ****** query,modify and maintain method with USER LOCATION ******
 
 public class MainActivity extends AppCompatActivity
 
@@ -45,11 +45,11 @@ public class MainActivity extends AppCompatActivity
         modifyValueUserLocation = findViewById(R.id.modifyuserlocation);
         maintainValueUserLocation = findViewById(R.id.maintain);
 
-        // ***************//
+        // ******************
         // The User locations are sent as NULL values from app to  raspberry pi .
         // Because in the Demo, the app itself is not providing USER LOCATION (In the real product it will)
         // Rather we are getting USER LOCATION directly from the raspberrypi (By detecting red object by using raspberry pi's camera)
-
+        // ******************
 
         btnQueryUserLocation.setOnClickListener(new View.OnClickListener()
         {
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity
                 String queryX = "NULL";
                 String queryY = "NULL";
 
-                String queriedValue= illumination.query(requestId,queryX,queryY);  //Calling of query method with USER LOCATION
+                String queriedValue= illumination.query(requestId,queryX,queryY);  // ****** Calling of query method with USER LOCATION ******
 
                 TextView tview = findViewById(R.id.queryvalue);
                 tview.setText("Current illumination level is  = " + queriedValue + "unit");
@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity
                 requestId = "modifyUserLocation";
                 String modifyX = "NULL";
                 String modifyY = "NULL";
-                String modifyValue = modifyValueUserLocation.getText().toString();  //Calling of modify method with USER LOCATION
+                String modifyValue = modifyValueUserLocation.getText().toString();  // ****** Calling of modify method with USER LOCATION ******
 
                 illumination.modify(requestId,modifyX,modifyY,modifyValue);
 
@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity
                 requestId = "maintainUserLocation";
                 String maintainX = "NULL";
                 String maintainY = "NULL";
-                String maintainValue = maintainValueUserLocation.getText().toString(); //Calling of maintain method with USER LOCATION
+                String maintainValue = maintainValueUserLocation.getText().toString(); // ****** Calling of maintain method with USER LOCATION ******
 
                 illumination.maintain(requestId,maintainX,maintainY,maintainValue);
             }
@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View v)
             {
 
-                    //Going to the second page which deal with query,modify,maintain method with Specific Location
+                    // ****** Going to the second page which deal with query,modify,maintain method with Specific Location ******
 
                     Intent intent = new Intent(MainActivity.this, specificLocationActivity.class);
                     startActivity(intent);
