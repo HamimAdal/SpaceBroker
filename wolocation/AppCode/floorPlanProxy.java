@@ -26,11 +26,11 @@ class floorPlan implements floorPlanInterface
 
 
     // The following method is for retrieving space image from raspberry pi (Space Broker)
-    public String returnSpaceImage(String choiceId  )
+    public String returnSpaceImage(String requestType  )
     {
 
 
-        requestSpaceImage = choiceId + ":" + "NULLVALUE" ;
+        requestSpaceImage = requestType + ":" + "NULLVALUE" ;
 
         wirelessCommunication wirelesscommunication = new wirelessCommunication();
         wirelesscommunication.execute(requestSpaceImage); //wireless communication between app and raspberry pi (Space Broker)

@@ -21,7 +21,7 @@ class wirelessCommunication extends AsyncTask<String,Void,Void>
 
         String CMD = arg[0];
         String arr[] = CMD.split(":");
-        String requestID =  arr[0] ;
+        String requestType =  arr[0] ;
 
 
         try
@@ -36,7 +36,7 @@ class wirelessCommunication extends AsyncTask<String,Void,Void>
 
 
 
-            if (requestID.equals("querySpecificLocation") || requestID.equals("queryUserLocation") || requestID.equals("returnSpaceImage"))
+            if (requestType.equals("querySpecificLocation") || requestType.equals("queryUserLocation") || requestType.equals("returnSpaceImage"))
             {
 
 

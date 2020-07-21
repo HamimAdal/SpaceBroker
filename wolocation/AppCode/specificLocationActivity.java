@@ -38,7 +38,7 @@ public class specificLocationActivity extends Activity
     TextView  coordinateXY, imgSize;
     ImageView spaceImage;
 
-    public static String requestId ;
+    public static String requestType ;
 
 
 
@@ -73,11 +73,11 @@ public class specificLocationActivity extends Activity
             public void onClick(View v)
             {
 
-                requestId = "querySpecificLocation";
+                requestType = "querySpecificLocation";
                 String queryX = String.valueOf(x);
                 String queryY = String.valueOf(y);
 
-                String queriedValue= illumination.query(requestId,queryX,queryY);  //Calling of query method with SPECIFIC LOCATION
+                String queriedValue= illumination.query(requestType,queryX,queryY);  //Calling of query method with SPECIFIC LOCATION
 
                 TextView tview = findViewById(R.id.queryvalue);
                 tview.setText("Current illumination level is  = " + queriedValue + "unit");
@@ -90,12 +90,12 @@ public class specificLocationActivity extends Activity
             public void onClick(View v)
             {
 
-                requestId = "modifySpecificLocation";
+                requestType = "modifySpecificLocation";
                 String modifyX = String.valueOf(x);
                 String modifyY = String.valueOf(y);
                 String modifyValue = modifyWithLocationValue.getText().toString();
 
-                illumination.modify(requestId,modifyX,modifyY,modifyValue);  //Calling of modify method with SPECIFIC LOCATION
+                illumination.modify(requestType,modifyX,modifyY,modifyValue);  //Calling of modify method with SPECIFIC LOCATION
 
             }
         });
@@ -106,12 +106,12 @@ public class specificLocationActivity extends Activity
             public void onClick(View v)
             {
 
-                requestId = "maintainSpecificLocation";
+                requestType = "maintainSpecificLocation";
                 String maintainX = String.valueOf(x);
                 String maintainY = String.valueOf(y);
                 String maintainValue = maintainWithLocationValue.getText().toString();
 
-                illumination.maintain(requestId,maintainX,maintainY,maintainValue);  //Calling of maintain method with SPECIFIC LOCATION
+                illumination.maintain(requestType,maintainX,maintainY,maintainValue);  //Calling of maintain method with SPECIFIC LOCATION
 
             }
         });
@@ -123,9 +123,9 @@ public class specificLocationActivity extends Activity
             {
 
                 floorPlan floorPlanImage= new floorPlan();
-                requestId = "returnSpaceImage";
+                requestType = "returnSpaceImage";
 
-                String queriedSpaceImage= floorPlanImage.returnSpaceImage(requestId ); // calling of returnSpaceImage method
+                String queriedSpaceImage= floorPlanImage.returnSpaceImage(requestType ); // calling of returnSpaceImage method
                                                                                        // returns space image from raspberry pi (Space Broker)
 
 
