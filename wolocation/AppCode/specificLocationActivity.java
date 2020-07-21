@@ -64,6 +64,37 @@ public class specificLocationActivity extends Activity
         maintainWithLocationValue =  findViewById(R.id.maintainwithlocation);
 
 
+        OnTouchListener imgSourceOnTouchListener
+                = new OnTouchListener()
+        {
+
+            @Override
+            public boolean onTouch(View view, MotionEvent event)
+            {
+
+                String coordinate = floorPlanImage.inputLocationInSpaceImage(view,  event); // ***** This method returns Location coordinates (x and y) provided by the user *****
+                                                                                            // ***** by touching pixel on the Space Image *****
+
+                String array[] = coordinate.split(":");
+
+                x = array[0];    // ***** These 'x' and 'y' coordinate values are used as location parameters on the methods (query,modify,maintain) later on *****
+                y = array[1];
+
+                coordinateXY.setText(
+                        "X Co-ordinate of touched position: "
+                                + x + "\n" + "Y Co-ordinate of touched position: "
+                                + y);
+
+                imgSize.setText(
+                        "\nTotal size: "
+                                +"Width: "  + String.valueOf(480) + ", "
+                                +"Height: "  + String.valueOf(360));
+
+                return true;
+
+            }
+        };
+
         spaceImage.setOnTouchListener(imgSourceOnTouchListener);
 
         btnQuery.setOnClickListener(new View.OnClickListener()
@@ -146,36 +177,7 @@ public class specificLocationActivity extends Activity
 
 
     // When user touches the pixels on the Space Image
-    OnTouchListener imgSourceOnTouchListener
-            = new OnTouchListener()
-    {
 
-        @Override
-        public boolean onTouch(View view, MotionEvent event)
-        {
-
-            String coordinate = floorPlanImage.inputLocationInSpaceImage(view,  event); // This method returns Location coordinates provided by the user
-                                                                                        // by touching pixel on the Space Image
-
-            String array[] = coordinate.split(":");
-
-            x = array[0];
-            y = array[1];
-
-            coordinateXY.setText(
-                    "X Co-ordinate of touched position: "
-                            + x + "\n" + "Y Co-ordinate of touched position: "
-                            + y);
-
-            imgSize.setText(
-                    "\nTotal size: "
-                            +"Width: "  + String.valueOf(480) + ", "
-                            +"Height: "  + String.valueOf(360));
-
-            return true;
-
-        }
-    };
 
 }
 
