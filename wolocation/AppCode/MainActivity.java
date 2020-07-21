@@ -45,6 +45,11 @@ public class MainActivity extends AppCompatActivity
         modifyValueUserLocation = findViewById(R.id.modifyuserlocation);
         maintainValueUserLocation = findViewById(R.id.maintain);
 
+        // ***************//
+        // The User locations are sent as NULL values from app to  raspberry pi .
+        // Because in the Demo, the app itself is not providing USER LOCATION (In the real product it will)
+        // Rather we are getting USER LOCATION directly from the raspberrypi (By detecting red object by using raspberry pi's camera)
+
 
         btnQueryUserLocation.setOnClickListener(new View.OnClickListener()
         {
