@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity
                 String queryX = "NULL";
                 String queryY = "NULL";
 
-                String queriedValue= illumination.query(requestId,queryX,queryY);  //Implementation of query method with USER LOCATION
+                String queriedValue= illumination.query(requestId,queryX,queryY);  //Calling of query method with USER LOCATION
 
                 TextView tview = findViewById(R.id.queryvalue);
                 tview.setText("Current illumination level is  = " + queriedValue + "unit");
@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity
                 requestId = "modifyUserLocation";
                 String modifyX = "NULL";
                 String modifyY = "NULL";
-                String modifyValue = modifyValueUserLocation.getText().toString();  //Implementation of modify method with USER LOCATION
+                String modifyValue = modifyValueUserLocation.getText().toString();  //Calling of modify method with USER LOCATION
 
                 illumination.modify(requestId,modifyX,modifyY,modifyValue);
 
@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity
                 requestId = "maintainUserLocation";
                 String maintainX = "NULL";
                 String maintainY = "NULL";
-                String maintainValue = maintainValueUserLocation.getText().toString(); //Implementation of maintain method with USER LOCATION
+                String maintainValue = maintainValueUserLocation.getText().toString(); //Calling of maintain method with USER LOCATION
 
                 illumination.maintain(requestId,maintainX,maintainY,maintainValue);
             }

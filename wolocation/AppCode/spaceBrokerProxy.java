@@ -3,29 +3,32 @@ package com.example.illuminationmodify;
 
 interface characteristicsInterface
 {
-    String query(String ChoiceId, String X,String Y  ); // return value of  that location
-    void modify(String ChoiceId, String X,String Y,String Value); // modify value of that location
-    void maintain(String ChoiceId, String X,String Y,String Value); // maintain a value of the current location
+    String query(String ChoiceId, String X,String Y  );
+    void modify(String ChoiceId, String X,String Y,String Value);
+    void maintain(String ChoiceId, String X,String Y,String Value);
 }
 
 class Characteristics   implements characteristicsInterface
 {
 
-    public static String CMD;        // CMD is the string or message which will be sent  to the space broker from the application,
+    public static String CMD;        // CMD is the string or message which will be sent  to the space broker from the application which consists
+                                     // 1. requestype and/or
+                                     // 2. location and/or
+                                     // 3. value and/or
     String queriedValue= "";
 
 
     @Override
-    public String query(String RequestId, String X,String Y )
+    public String query(String RequestId, String X,String Y )  // implementation of query method
     {
 
 
 
-        if (X == "NULL" && Y == "NULL")
+        if (X == "NULL" && Y == "NULL")        // implementation of query method with USER LOCATION
             {
                 CMD = RequestId + ":" + "NULLVALUE" ;
             }
-        else
+        else                                   // implementation of query method with SPECIFIC LOCATION
             {
                 CMD = RequestId + ":" + X + ":" + Y ;
             }
@@ -52,14 +55,14 @@ class Characteristics   implements characteristicsInterface
     }
 
     @Override
-    public void modify(String RequestId, String X,String Y,String Value)
+    public void modify(String RequestId, String X,String Y,String Value)  // implementation of modify method
     {
 
-        if (X == "NULL" && Y == "NULL")
+        if (X == "NULL" && Y == "NULL")        // implementation of modify method with USER LOCATION
             {
                 CMD = RequestId + ":" + Value;
             }
-        else
+        else                                   // implementation of modify method with SPECIFIC LOCATION
             {
                 CMD = RequestId + ":" + X + ":" + Y + ":" + Value;
             }
@@ -71,14 +74,14 @@ class Characteristics   implements characteristicsInterface
 
 
     @Override
-    public void maintain(String RequestId, String X,String Y,String Value)
+    public void maintain(String RequestId, String X,String Y,String Value)  // implementation of maintain method
     {
-        if (X == "NULL" && Y == "NULL")
+        if (X == "NULL" && Y == "NULL")      // implementation of maintain method with USER LOCATION
             {
                 CMD = RequestId + ":" + Value;
             }
 
-        else
+        else                                 // implementation of maintain method with SPECIFIC LOCATION
             {
                 CMD = RequestId + ":" + X + ":" + Y + ":" + Value;
             }

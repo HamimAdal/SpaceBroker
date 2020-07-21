@@ -77,7 +77,7 @@ public class specificLocationActivity extends Activity
                 String queryX = String.valueOf(x);
                 String queryY = String.valueOf(y);
 
-                String queriedValue= illumination.query(requestId,queryX,queryY);  //Implementation of query method with SPECIFIC LOCATION
+                String queriedValue= illumination.query(requestId,queryX,queryY);  //Calling of query method with SPECIFIC LOCATION
 
                 TextView tview = findViewById(R.id.queryvalue);
                 tview.setText("Current illumination level is  = " + queriedValue + "unit");
@@ -95,7 +95,7 @@ public class specificLocationActivity extends Activity
                 String modifyY = String.valueOf(y);
                 String modifyValue = modifyWithLocationValue.getText().toString();
 
-                illumination.modify(requestId,modifyX,modifyY,modifyValue);  //Implementation of modify method with SPECIFIC LOCATION
+                illumination.modify(requestId,modifyX,modifyY,modifyValue);  //Calling of modify method with SPECIFIC LOCATION
 
             }
         });
@@ -111,7 +111,7 @@ public class specificLocationActivity extends Activity
                 String maintainY = String.valueOf(y);
                 String maintainValue = maintainWithLocationValue.getText().toString();
 
-                illumination.maintain(requestId,maintainX,maintainY,maintainValue);  //Implementation of maintain method with SPECIFIC LOCATION
+                illumination.maintain(requestId,maintainX,maintainY,maintainValue);  //Calling of maintain method with SPECIFIC LOCATION
 
             }
         });
@@ -125,7 +125,8 @@ public class specificLocationActivity extends Activity
                 floorPlan floorPlanImage= new floorPlan();
                 requestId = "returnSpaceImage";
 
-                String queriedSpaceImage= floorPlanImage.returnSpaceImage(requestId ); // retrieving space image from raspberry pi (Space Broker)
+                String queriedSpaceImage= floorPlanImage.returnSpaceImage(requestId ); // calling of returnSpaceImage method
+                                                                                       // returns space image from raspberry pi (Space Broker)
 
 
                 // Displaying Space Image on the app
