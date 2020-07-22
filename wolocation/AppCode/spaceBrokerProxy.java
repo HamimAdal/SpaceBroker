@@ -29,20 +29,7 @@ class Characteristics   implements characteristicsInterface
         wirelessCommunication wirelesscommunication = new wirelessCommunication();
         wirelesscommunication.execute(CMD);  // ****** wireless communication between app and raspberry pi (Space Broker) ******
 
-          try
-            {
-                 Thread.sleep(5000);
-            }
-          catch (InterruptedException e)
-
-            {
-                 e.printStackTrace();
-            }
-
-
         queriedValue = wirelesscommunication.receivedString;
-
-
         return queriedValue;
 
     }

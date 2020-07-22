@@ -25,10 +25,10 @@ public class specificLocationActivity extends Activity
     floorPlan floorPlanImage= new floorPlan();
 
 
-    Button btnSpace;
-    Button btnQuery;
-    Button btnModify;
-    Button btnMaintainWithLocation;
+    Button btnSpaceImage;
+    Button btnQuerySpecificLocation;
+    Button btnModifySpecificLocation;
+    Button btnMaintainSpecificLocation;
 
     EditText modifyWithLocationValue;
     EditText maintainWithLocationValue;
@@ -36,7 +36,7 @@ public class specificLocationActivity extends Activity
 
     public String x,y;
     TextView  coordinateXY, imgSize;
-    ImageView spaceImage;
+    ImageView spaceImageDisplay;
 
     public static String requestType ;
 
@@ -50,21 +50,21 @@ public class specificLocationActivity extends Activity
 
 
 
-        spaceImage = findViewById(R.id.spaceImage);
+        spaceImageDisplay = findViewById(R.id.spaceimagedisplay);
         coordinateXY = findViewById(R.id.invertedxy);
         imgSize = findViewById(R.id.size);
 
-        btnSpace = findViewById(R.id.btnspace);
-        btnQuery = findViewById(R.id.btnQuery);
-        btnModify = findViewById(R.id.btnModify);
-        btnMaintainWithLocation = findViewById(R.id.btnMaintainwithlocation);
+        btnSpaceImage = findViewById(R.id.btnspaceimage);
+        btnQuerySpecificLocation = findViewById(R.id.btnQueryspecificlocation);
+        btnModifySpecificLocation = findViewById(R.id.btnModifyspecificlocation);
+        btnMaintainSpecificLocation = findViewById(R.id.btnMaintainspecificlocation);
 
 
         modifyWithLocationValue = findViewById(R.id.modify);
         maintainWithLocationValue =  findViewById(R.id.maintainwithlocation);
 
 
-        btnSpace.setOnClickListener(new View.OnClickListener()
+        btnSpaceImage.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
@@ -77,7 +77,7 @@ public class specificLocationActivity extends Activity
 
 
                 // Displaying Space Image on the app
-                ImageView image = findViewById(R.id.spaceImage);
+                ImageView image = findViewById(R.id.spaceimagedisplay);
                 byte[] imageBytes = Base64.decode(queriedSpaceImage, Base64.DEFAULT);
                 Bitmap decodedImage = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
                 image.setImageBitmap(decodedImage);
@@ -118,9 +118,9 @@ public class specificLocationActivity extends Activity
             }
         };
 
-        spaceImage.setOnTouchListener(imgSourceOnTouchListener);
+        spaceImageDisplay.setOnTouchListener(imgSourceOnTouchListener);
 
-        btnQuery.setOnClickListener(new View.OnClickListener()
+        btnQuerySpecificLocation.setOnClickListener(new View.OnClickListener()
         {
 
             @Override
@@ -138,7 +138,7 @@ public class specificLocationActivity extends Activity
 
             }
         });
-        btnModify.setOnClickListener(new View.OnClickListener()
+        btnModifySpecificLocation.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
@@ -154,7 +154,7 @@ public class specificLocationActivity extends Activity
             }
         });
 
-        btnMaintainWithLocation.setOnClickListener(new View.OnClickListener()
+        btnMaintainSpecificLocation.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)

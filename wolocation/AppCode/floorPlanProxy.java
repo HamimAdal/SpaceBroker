@@ -36,14 +36,6 @@ class floorPlan implements floorPlanInterface
         wirelessCommunication wirelesscommunication = new wirelessCommunication();
         wirelesscommunication.execute(requestSpaceImage); //wireless communication between app and raspberry pi (Space Broker)
 
-        try
-        {
-            Thread.sleep(5000);
-        } catch (InterruptedException e)
-
-        {
-            e.printStackTrace();
-        }
 
         String queriedSpaceImage= wirelesscommunication.receivedString;
 

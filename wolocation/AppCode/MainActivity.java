@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity
     EditText modifyValueUserLocation;
     EditText maintainValueUserLocation;
 
-    public static String requestId ;
+    public static String requestType ;
 
 
     @Override
@@ -37,13 +37,13 @@ public class MainActivity extends AppCompatActivity
 
         btnQueryUserLocation = findViewById(R.id.btnqueryuserlocation);
         btnModifyUserLocation = findViewById(R.id.btnModifyuserlocation);
-        btnMaintainUserLocation = findViewById(R.id.btnMaintain);
-        btnSpecificLocation = findViewById(R.id.SpaceImage);
+        btnMaintainUserLocation = findViewById(R.id.btnMaintainuserLocation);
+        btnSpecificLocation = findViewById(R.id.btnSpecificLocation);
 
 
 
-        modifyValueUserLocation = findViewById(R.id.modifyuserlocation);
-        maintainValueUserLocation = findViewById(R.id.maintain);
+        modifyValueUserLocation = findViewById(R.id.modifyvalueuserlocation);
+        maintainValueUserLocation = findViewById(R.id.maintainvalueuserLocation);
 
         // ******************
         // The User locations are sent as NULL values from app to  raspberry pi .
@@ -58,11 +58,11 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View v)
             {
 
-                requestId = "queryUserLocation";
+                requestType = "queryUserLocation";
                 String queryX = "NULL";
                 String queryY = "NULL";
 
-                String queriedValue= illumination.query(requestId,queryX,queryY);  // ****** Calling of query method with USER LOCATION ******
+                String queriedValue= illumination.query(requestType,queryX,queryY);  // ****** Calling of query method with USER LOCATION ******
 
                 TextView tview = findViewById(R.id.queryvalue);
                 tview.setText("Current illumination level is  = " + queriedValue + "unit");
@@ -75,12 +75,12 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View v)
             {
 
-                requestId = "modifyUserLocation";
+                requestType = "modifyUserLocation";
                 String modifyX = "NULL";
                 String modifyY = "NULL";
                 String modifyValue = modifyValueUserLocation.getText().toString();
 
-                illumination.modify(requestId,modifyX,modifyY,modifyValue);  // ****** Calling of modify method with USER LOCATION ******
+                illumination.modify(requestType,modifyX,modifyY,modifyValue);  // ****** Calling of modify method with USER LOCATION ******
 
             }
         });
@@ -90,12 +90,12 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View v)
             {
 
-                requestId = "maintainUserLocation";
+                requestType = "maintainUserLocation";
                 String maintainX = "NULL";
                 String maintainY = "NULL";
                 String maintainValue = maintainValueUserLocation.getText().toString();
 
-                illumination.maintain(requestId,maintainX,maintainY,maintainValue);  // ****** Calling of maintain method with USER LOCATION ******
+                illumination.maintain(requestType,maintainX,maintainY,maintainValue);  // ****** Calling of maintain method with USER LOCATION ******
             }
         });
 
